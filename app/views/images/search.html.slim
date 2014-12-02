@@ -5,3 +5,8 @@ br
 
 .wrap
   == render "images_search"
+
+.random.cnt
+  h4 Каждый раз рандомная:
+  - url = random_images_url(:n => Time.now.to_i)
+  span#random-url.gray.copy data-clipboard-text==url data-timer==Time.now.to_i data-original-url==random_images_url = url 

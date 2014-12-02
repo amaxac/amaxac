@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   def random
     image_url = Image.published.order("RANDOM()").first.link
 
-    # response.headers['Cache-Control'] = "public, max-age=#{12.hours.to_i}"
+    response.headers['Cache-Control'] = "public, max-age=#{12.hours.to_i}"
     response.headers['Content-Type'] = 'image/jpeg'
     response.headers['Content-Disposition'] = 'inline'
     render :text => open(image_url, "rb").read

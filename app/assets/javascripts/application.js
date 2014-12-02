@@ -35,6 +35,15 @@ function ready() {
       url: $(this).data('href')
     });
   })
+
+  // does not work
+  // setInterval(function(){
+  //   var url = $("#random-url").data("original-url");
+  //   var timer = parseInt($("#random-url").data("timer")) + 1;
+  //   var new_url = url + "?n=" + timer;
+  //   $("#random-url").data("clipboard-text", new_url).text(new_url);
+  //   $("#random-url").data("timer", timer);
+  // }, 1000)
 }
 
 function init_clipboard_copy() {
@@ -42,7 +51,7 @@ function init_clipboard_copy() {
   client.on( "ready", function( readyEvent ) {
     client.on( "aftercopy", function( event ) {
       var t = $(event.target);
-      t.text(t.data("clipboard-text") + " - скопировано")
+      t.text(t.data("clipboard-text") + " - скопировано");
     } );
   } );
 }

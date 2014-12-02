@@ -75,6 +75,17 @@ body {
   transition: background-color 0.5s ease;
 }
 
+.random {
+  border: 1px solid #ddd;
+  padding: 10px;
+  color: #777;
+}
+
+.copy {
+  margin-top: 5px;
+  border-bottom: 1px dashed #ddd;
+}
+
 .highlight {
   background-color: #cef1ce !important;
 }
