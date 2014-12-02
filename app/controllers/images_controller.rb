@@ -10,7 +10,6 @@ class ImagesController < ApplicationController
   end
 
   def random
-    image = Dragonfly.app.fetch_url(Image.published.order("RANDOM()").first.link)
     image_url = Image.published.order("RANDOM()").first.link
 
     # response.headers['Cache-Control'] = "public, max-age=#{12.hours.to_i}"
