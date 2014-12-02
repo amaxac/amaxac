@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def admin
     if params[:key] == ENV["admin_key"]
-      session[:admin] = true
+      session[:key] = ENV["admin_key"]
       flash[:notice] = "Теперь вы админ!"
     end
     redirect_to search_images_path
@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   private
 
   def admin?
-    session[:admin] || false
+    session[:key] == ENV["admin_key"]
   end
 end
