@@ -22,6 +22,8 @@ html lang="ru"
     = favicon_link_tag 'icon.png', :rel => 'shortcut icon'
   body
     .container-fluid
+        - if Rails.env.development?
+          p.cnt DEV
         #nav.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
           ul.list-unstyled
             li class==css_nav_item("index") 
@@ -35,4 +37,11 @@ html lang="ru"
         .flash = bootstrap_flash
         #handy-alert
         = yield
+    footer.footer
+      .container.cnt
+        p 
+          = link_to "Vizakenjack", "http://vk.com/vizakenjack", target: "_blank"
+          |  2014
+          |  |  
+          = link_to "Филиал Одноклассников", "http://vk.com/ok_filial", target: "_blank"
     = render 'layouts/analytics'

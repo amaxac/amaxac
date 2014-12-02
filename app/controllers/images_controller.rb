@@ -98,7 +98,7 @@ class ImagesController < ApplicationController
     end
 
     def images_for_output
-      @random = Image.order("RANDOM()").limit(2).load
+      @random = Image.published.order("RANDOM()").limit(2).load
       params[:image].try(:[],:text) ? Image.where("text ILIKE ?", "%#{params[:image][:text]}%").limit(5).all : [@random.first]
     end
 end
