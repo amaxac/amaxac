@@ -69,6 +69,7 @@ body {
 
 .image-content img, .image-cell img {
   max-width: 100%;
+  margin-bottom: 10px;
 }
 
 .image-row {
@@ -184,6 +185,7 @@ label.active {
   color: #fd9808;
 }
 
-h4 {
-  color: #777;
+h3, h4 {
+  color: #bbb;
+  font-weight: 400;
 }
