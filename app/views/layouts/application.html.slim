@@ -1,0 +1,39 @@
+doctype html
+html lang="ru"
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+    meta content="Коллекция скриншотов из самой лучшей социальной сети." name="description"
+    meta content="Vizakenjack" name="author"
+    meta property="og:title" content="Это обман, чтобы набрать классы))000"
+    meta property="og:locale" content="ru_RU"
+    meta property="og:description" content="Коллекция скриншотов из самой лучшей социальной сети."
+    - if @random
+      meta property="og:image" content==@random.first.link
+    title = title_for_output
+    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag "application", media: 'all', "data-turbolinks-track" => true
+    = javascript_include_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js", media: 'all', "data-turbolinks-track" => true
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+      
+    = csrf_meta_tags
+    = favicon_link_tag 'icon.png', :rel => 'shortcut icon'
+  body
+    .container-fluid
+        #nav.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+          ul.list-unstyled
+            li class==css_nav_item("index") 
+              = link_to fa_icon("list"), images_path, class: "btn btn-top"
+            li class==css_nav_item("search") 
+              = link_to fa_icon("search"), search_images_path, class: "btn btn-top"
+            li class==css_nav_item("new") 
+              = link_to fa_icon("plus"), new_image_path, class: "btn btn-top"
+    #main-content.container-fluid
+      .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+        .flash = bootstrap_flash
+        #handy-alert
+        = yield
+    = render 'layouts/analytics'

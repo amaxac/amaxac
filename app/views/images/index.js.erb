@@ -1,0 +1,4 @@
+$("#pagination-content").html('<%= j(render "images_table", images: @images) %>')
+$('html, body').animate({
+    scrollTop: $("#pagination-content").offset().top
+}, 300);

@@ -1,0 +1,5 @@
+<%- if @image.new_record? %>
+$(".form").html("<%= j(render 'form') %>")
+<%- else %>
+window.create_alert("<%= @message %>")
+<%- end %>

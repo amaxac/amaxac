@@ -1,0 +1,6 @@
+- if admin? && @unapproved
+  == render "images_table", images: @unapproved, pagination: false
+
+#pagination-content
+  == render "images_table", images: @images
+

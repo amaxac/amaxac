@@ -1,0 +1,23 @@
+table#images-table.table
+  tbody
+    - images.each do |image|
+      tr.image-row data-id==image.id
+        td.image-cell 
+          = image_tag image.link
+          - unless image.published
+            br
+            small.gray = image.text
+
+        - if admin?
+          /td = image.rating
+          td = image.added_by
+          td
+            p = link_to 'Изменить', edit_image_path(image), class: "btn btn-xs"
+            p = link_to 'Удалить', image, method: :delete, class: "btn btn-xs"
+            - unless image.published
+              p = link_to 'Одобрить', publish_image_path(image), method: :post, class: "btn btn-xs btn-approve", remote: true
+
+
+
+.cnt
+  = paginate images, remote: true

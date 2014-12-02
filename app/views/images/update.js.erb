@@ -1,0 +1,5 @@
+<%- if @image.invalid? %>
+$(".form").html("<%= j(render 'form') %>")
+<%- else %>
+window.create_alert("Картинка изменена.")
+<%- end %>

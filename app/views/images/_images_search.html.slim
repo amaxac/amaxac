@@ -1,0 +1,6 @@
+- if @images
+  - @images.each do |image|
+    .image-content
+      = link_to (image_tag image.link), search_images_path, remote: true
+      br
+      small.gray = image.link

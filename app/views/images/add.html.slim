@@ -1,0 +1,12 @@
+- if @result.try(:[], :not_added)
+  h3 Не удалось добавить:
+  - @result[:not_added].each do |image|
+    div 
+      = image.link
+      ol
+        - image.errors.full_messages.each do |error|
+          li = error
+
+= simple_form_for :image, url: add_images_path do |f|
+  = f.input :text, as: :text, label: false, input_html: { class: "input-lg textarea" }
+  .col-xs-offset-5 = f.button :submit, 'Добавить', class: "btn btn-lg"

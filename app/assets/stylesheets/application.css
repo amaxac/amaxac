@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  min-width: 480px;
+  min-height: 700px;
+  font-weight: 300;
+}
+
+a:hover {
+  color: #fd9808;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+}
+
+
+#nav {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#nav > ul > li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.image-content {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.image-content img, .image-cell img {
+  width: 100%;
+}
+
+.image-row {
+  transition: background-color 0.5s ease;
+}
+
+.highlight {
+  background-color: #cef1ce !important;
+}
+
+.padding-top {
+  padding-top: 150px;
+}
+
+
+.gray {
+  color: #999;
+}
+
+
+.btn {
+  background-color: white;
+  border: 1px solid #ddd;
+  transition: 0.2s ease;
+  font-weight: 300;
+}
+
+.btn:hover, li.active .btn {
+  color: #fd9808;
+  background-color: #f4f4f4;
+}
+
+.btn-top {
+  border: none;
+  border-radius: 25px;
+  color: black;
+  font-weight: 300;
+
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 30px;
+  transition: 0.2s ease;
+}
+
+
+.cnt {
+  text-align: center;
+}
+
+.alert {
+  background-color: white;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+
+.pagination .page {
+  font-size: 28px;
+  padding: 5px;
+}
+
+.page a {
+  transition: 0.2s ease;
+}
+
+.pagination .current {
+  color: #ddd;
+}
+
+.textarea {
+  height: 500px !important;
+}

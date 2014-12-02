@@ -1,0 +1,7 @@
+.padding-top
+
+= simple_form_for :image, url: search_images_path, remote: true, html: { method: "get" } do |f|
+  = f.input :text, label: false, input_html: { class: "input-lg autocomplete", value: nil }, placeholder: "Например: #{@random.last.try(:text)}"
+
+.wrap
+  == render "images_search"
