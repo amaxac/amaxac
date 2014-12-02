@@ -19,6 +19,7 @@ body {
   min-width: 480px;
   min-height: 700px;
   font-weight: 300;
+  -webkit-font-smoothing: antialiased;
 }
 
 a:hover {
@@ -65,9 +66,15 @@ a {
   padding-top: 150px;
 }
 
-
 .gray {
   color: #999;
+}
+
+
+.text-header {
+  text-align: right;
+  color: #bbb;
+  font-weight: 300;
 }
 
 
