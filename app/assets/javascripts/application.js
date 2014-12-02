@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/autocomplete
+//= require zeroclipboard
 //= require turbolinks
 //= require_tree .
 
@@ -27,9 +28,6 @@ function ready() {
       return false;
     }
   });
-
-  init_clipboard_copy();
-
 }
 
 function init_clipboard_copy() {
@@ -52,5 +50,15 @@ function slide_row(object) {
 }
 
 
+
+
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+$(document).on("page:change", function(){
+  init_clipboard_copy();
+});
+
+$(document).on("page:before-change", function(){
+  ZeroClipboard.destroy();
+});
