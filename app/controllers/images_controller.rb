@@ -1,3 +1,4 @@
+require 'open-uri'
 class ImagesController < ApplicationController
   before_action :set_image, only: [:edit, :update, :destroy, :publish]
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
@@ -6,6 +7,16 @@ class ImagesController < ApplicationController
     @images = admin? ? Image : Image.published
     @images = Image.unpublished  if admin? && params[:published]
     @images = @images.order(id: :desc).page(params[:page]).per(20)
+  end
+
+  def random
+    # image = Dragonfly.app.fetch_url(Image.published.order("RANDOM()").first.link)
+    image_url = Image.published.order("RANDOM()").first.link
+
+    response.headers['Cache-Control'] = "public, max-age=#{12.hours.to_i}"
+    response.headers['Content-Type'] = 'image/jpeg'
+    response.headers['Content-Disposition'] = 'inline'
+    render :text => open(image_url, "rb").read
   end
 
   def show

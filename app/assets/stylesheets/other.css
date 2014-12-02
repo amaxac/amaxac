@@ -6,6 +6,7 @@
   float: left;
   display: none;
   min-width: 160px;
+  max-width: 700px;
   margin: 2px 0 0 0;
   padding: 0;
   list-style: none;
