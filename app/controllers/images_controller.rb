@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = admin? ? Image : Image.published
+    @images = Image.unpublished  if admin? && params[:published]
     @images = @images.order(id: :desc).page(params[:page]).per(20)
   end
 

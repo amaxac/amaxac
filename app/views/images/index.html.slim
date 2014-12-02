@@ -1,5 +1,12 @@
-- if admin? && @unapproved
-  == render "images_table", images: @unapproved, pagination: false
+- if admin?
+  .radio.cnt
+    .btn-group data-toggle="buttons"
+      label.btn.active
+        input.switch type="radio" name="options" autocomplete="off" checked="checked" data-href==images_path
+        | Все картинки
+      label.btn
+        input.switch type="radio" name="options" autocomplete="off" data-href==images_path(published: false)
+        | Ожидающие одобрения
 
 #pagination-content
   == render "images_table", images: @images

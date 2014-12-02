@@ -20,4 +20,4 @@ table#images-table.table
 
 
 .cnt
-  = paginate images, remote: true
+  = paginate images, remote: true, params: { published: params[:published] } 

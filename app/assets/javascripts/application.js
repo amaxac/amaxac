@@ -28,6 +28,13 @@ function ready() {
       return false;
     }
   });
+
+  $(".switch").change(function() {
+    $.ajax({
+      dataType: "script",
+      url: $(this).data('href')
+    });
+  })
 }
 
 function init_clipboard_copy() {

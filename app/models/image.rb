@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
   validate :check_image
 
   scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 
   def check_image
     begin

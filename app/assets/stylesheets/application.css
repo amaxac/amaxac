@@ -164,3 +164,7 @@ a:hover {
 a {
   color: black;
 }
+
+label.active {
+  color: #fd9808;
+}
