@@ -152,6 +152,10 @@ body {
   height: 500px !important;
 }
 
+.copy {
+  cursor: pointer;
+}
+
 a:hover {
   color: #fd9808;
   text-decoration: none;

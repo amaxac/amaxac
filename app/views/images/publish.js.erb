@@ -1,5 +1,5 @@
 var row = $('.image-row[data-id="<%= @image.id %>"]');
-row.filter(".btn-approve").remove();
+$(".btn-approve", row).remove();
 row.clearQueue().queue(function (next) {
     $(this).addClass("highlight"); next();
 }).delay(500).queue(function (next) {

@@ -68,7 +68,7 @@ class ImagesController < ApplicationController
     @image.destroy
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Картиночка удалена))000' }
-      format.json { head :no_content }
+      format.js
     end
   end
 

@@ -17,8 +17,7 @@
 //= require_tree .
 
 
-var ready;
-ready = (function() {
+function ready() {
   $(".autocomplete").autocomplete({
     source: '/images/autocomplete.json',
     select: function( event, ui ) {
@@ -29,7 +28,29 @@ ready = (function() {
     }
   });
 
-});
+  init_clipboard_copy();
+
+}
+
+function init_clipboard_copy() {
+  var client = new ZeroClipboard( $(".copy") );
+  client.on( "ready", function( readyEvent ) {
+    client.on( "aftercopy", function( event ) {
+      var t = $(event.target);
+      t.text(t.data("clipboard-text") + " - скопировано")
+    } );
+  } );
+}
+
+function slide_row(object) {
+  object.closest('tr')
+      .children('td')
+      .animate({ padding: 0 })
+      .wrapInner('<div />')
+      .children()
+      .slideUp("normal", function() { object.closest('tr').remove(); });
+}
+
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
