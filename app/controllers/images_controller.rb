@@ -18,6 +18,9 @@ class ImagesController < ApplicationController
     render :text => open(image_url, "rb").read
   end
 
+  def unknown
+  end
+
   def show
   end
 

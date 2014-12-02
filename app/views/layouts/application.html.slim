@@ -30,6 +30,8 @@ html lang="ru"
               = link_to fa_icon("list"), images_path, class: "btn btn-top"
             li class==css_nav_item("search") 
               = link_to fa_icon("search"), search_images_path, class: "btn btn-top"
+            li class==css_nav_item("unknown") 
+              = link_to fa_icon("random"), unknown_images_path, class: "btn btn-top"
             li class==css_nav_item("new") 
               = link_to fa_icon("plus"), new_image_path, class: "btn btn-top"
     #main-content.container-fluid

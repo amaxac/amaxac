@@ -1,0 +1,10 @@
+h3.text-header ...на случай важных переговоров
+br
+h4.gray.cnt Каждый раз рандомная:
+.random.cnt
+  - url = random_images_url(:n => Time.now.to_i)
+  br
+  p
+    span#random-url.gray.copy data-clipboard-text==url data-timer==Time.now.to_i data-original-url==random_images_url = url
+  br
+  small Hint: можно добавлять в конец любую цифру или букву, чтобы картинки не кешировались

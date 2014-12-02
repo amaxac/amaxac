@@ -79,7 +79,10 @@ body {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
-  color: #777;
+}
+
+#random-url {
+  font-size: 18px;
 }
 
 .copy {
@@ -179,4 +182,8 @@ a {
 
 label.active {
   color: #fd9808;
+}
+
+h4 {
+  color: #777;
 }
