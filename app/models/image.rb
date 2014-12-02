@@ -33,7 +33,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.for_autocomplete(term)
-    self.where("text ILIKE ?", "%#{term}%").limit(10).map(&:text)
+    self.published.where("text ILIKE ?", "%#{term}%").limit(10).map(&:text)
   end
 
   private
