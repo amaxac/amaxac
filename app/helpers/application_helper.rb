@@ -15,7 +15,7 @@ module ApplicationHelper
     link_to klass_image_path(image), class: "klass-button btn btn-sm", method: :post, remote: true, disabled: image.voted?(request.remote_ip) do
       # fa_icon("thumbs-o-up") + " КЛАСС " +
       content_tag(:i, nil, class: "klass-icon") + " Класс! " +
-      image.rating.to_s
+      (image.rating.to_s  if image.rating > 0)
     end
   end
 end
