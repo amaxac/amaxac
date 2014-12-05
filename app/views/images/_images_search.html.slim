@@ -4,3 +4,10 @@
       = link_to image_for_output(image), search_images_path, remote: true
       br
       span.gray.copy data-clipboard-text==image.link = image.link
+      - if admin?
+        /td = image.rating
+        br
+        .admin-panel
+          p.btn-group
+            = link_to 'Изменить', edit_image_path(image), class: "btn btn-xs"
+            = link_to 'Удалить', image, method: :delete, class: "btn btn-xs", remote: true

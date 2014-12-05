@@ -72,6 +72,10 @@ body {
   margin-bottom: 10px;
 }
 
+.admin-panel {
+  margin-top: 15px;
+}
+
 .image-row {
   transition: background-color 0.5s ease;
 }
