@@ -77,7 +77,16 @@ body {
 }
 
 .klass-button {
-  font-size: 15px;
+  font-size: 13px;
+}
+
+.klass-icon {
+  display: inline-block;
+  background-size: 12px 24px;
+  background-repeat: no-repeat;
+  background-image: image-url("klass3.png");
+  width: 12px;
+  height: 12px;
 }
 
 .admin-panel {
