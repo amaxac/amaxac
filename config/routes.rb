@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     
     member do
       post 'publish', as: :publish
+      post 'klass', as: :klass
     end
   end
 

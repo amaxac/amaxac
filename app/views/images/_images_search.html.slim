@@ -1,11 +1,13 @@
 - if @images
   - @images.each do |image|
     .image-content
-      = link_to image_for_output(image), search_images_path, remote: true
+      = link_to image_for_output(image), search_images_path, remote: true, class: "image"
       br
-      span.gray.copy data-clipboard-text==image.link = image.link
+      p
+        span.gray.copy data-clipboard-text==image.link = image.link
+        span.pull-right data-image-id==image.id
+          = klass_button(image)
       - if admin?
-        /td = image.rating
         br
         .admin-panel
           p.btn-group

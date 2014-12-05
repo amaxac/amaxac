@@ -1,6 +1,6 @@
 require 'open-uri'
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:edit, :update, :destroy, :publish]
+  before_action :set_image, only: [:edit, :update, :destroy, :publish, :klass]
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
@@ -91,6 +91,15 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Картиночка одобрена))000' }
+      format.js
+    end
+  end
+
+  def klass
+    @image.klass(request.remote_ip)
+
+    respond_to do |format|
+      format.html { redirect_to images_url, notice: 'Класс!' }
       format.js
     end
   end

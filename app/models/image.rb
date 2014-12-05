@@ -1,4 +1,7 @@
 class Image < ActiveRecord::Base
+
+  has_many :image_ratings
+
   # FORMATS = %w(jpeg jpg png)
   validates :link, uniqueness: true, presence: true
   validates :text, uniqueness: { case_sensitive: false }, presence: true, length: { maximum: 400 }
@@ -21,20 +24,35 @@ class Image < ActiveRecord::Base
     end
   end
 
-  def self.add_images(text, ip)
-    result = { i: 0, not_added: [] }
-    text.each_line do |l|
-      next  unless i_can_haz_link?(l)
-      link = l.split.first
-      text = l[/\s(.+)/].strip
-      image = self.new(link: link, text: text, added_by: ip, published: true)
-      image.save ? result[:i] += 1 : result[:not_added] << image
+  def klass(ip)
+    image_rating = self.image_ratings.find_or_initialize_by(ip: ip)
+    if image_rating.id?
+      self
+    else
+      self.update_attribute(:rating, rating+1)
     end
-    result
   end
 
-  def self.for_autocomplete(term)
-    self.published.where("text ILIKE ?", "%#{term}%").limit(10).map(&:text)
+  def voted?(ip)
+    self.image_ratings.where(ip: ip).any?
+  end
+
+  class << self
+    def add_images(text, ip)
+      result = { i: 0, not_added: [] }
+      text.each_line do |l|
+        next  unless i_can_haz_link?(l)
+        link = l.split.first
+        text = l[/\s(.+)/].strip
+        image = self.new(link: link, text: text, added_by: ip, published: true)
+        image.save ? result[:i] += 1 : result[:not_added] << image
+      end
+      result
+    end
+
+    def for_autocomplete(term)
+      self.published.where("text ILIKE ?", "%#{term}%").limit(10).map(&:text)
+    end
   end
 
   private

@@ -67,9 +67,17 @@ body {
   border-radius: 5px;
 }
 
-.image-content img, .image-cell img {
+.image-content .image > img, .image-cell img {
   max-width: 100%;
   margin-bottom: 10px;
+}
+
+.image-content > p {
+  line-height: 32px;
+}
+
+.klass-button {
+  font-size: 15px;
 }
 
 .admin-panel {
@@ -174,6 +182,10 @@ body {
 
 .copy {
   cursor: pointer;
+}
+
+.middle {
+  vertical-align: middle !important;
 }
 
 a:hover {

@@ -7,10 +7,13 @@ table#images-table.table
           - unless image.published
             br
             small.gray = image.text
+        td.middle
+          span data-image-id==image.id
+            = klass_button(image)
+          - if admin?
+            .cnt = image.added_by
 
         - if admin?
-          /td = image.rating
-          td = image.added_by
           td
             p = link_to 'Изменить', edit_image_path(image), class: "btn btn-xs"
             p = link_to 'Удалить', image, method: :delete, class: "btn btn-xs", remote: true
