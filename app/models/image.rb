@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
   # FORMATS = %w(jpeg jpg png)
   validates :link, uniqueness: true, presence: true
-  validates :text, uniqueness: true, presence: true, length: { maximum: 400 }
+  validates :text, uniqueness: { case_sensitive: false }, presence: true, length: { maximum: 400 }
   validate :check_image
 
   scope :published, -> { where(published: true) }
