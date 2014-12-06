@@ -30,6 +30,7 @@ class Image < ActiveRecord::Base
       self
     else
       self.update_attribute(:rating, rating+1)
+      image_rating.save
     end
   end
 
