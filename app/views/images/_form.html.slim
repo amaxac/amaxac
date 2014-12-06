@@ -1,3 +1,5 @@
+.image.cnt
+  = image_tag (@image.try(:link) || ""), class: "image-preview"
 = simple_form_for @image, remote: true do |f|
   = f.input :link, label: false, placeholder: "Ссылка на изображение", input_html: { class: "input-lg" }
   = f.input :text, label: false, placeholder: "Полный текст изображения", input_html: { class: "input-lg" }

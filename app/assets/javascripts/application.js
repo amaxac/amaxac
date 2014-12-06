@@ -36,6 +36,10 @@ function ready() {
     });
   })
 
+  $("#image_link").on("keyup", function() {
+    $(".image-preview").attr("src", $(this).val());
+  })
+
   // does not work
   // setInterval(function(){
   //   var url = $("#random-url").data("original-url");
