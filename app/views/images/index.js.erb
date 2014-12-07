@@ -1,4 +1,6 @@
 $("#pagination-content").html('<%= j(render "images_table", images: @images) %>')
-$('html, body').animate({
-    scrollTop: $("#pagination-content").offset().top
-}, 300);
+if ($(window).scrollTop() > 300) {
+  $('html, body').animate({
+      scrollTop: $("#pagination-content").offset().top
+  }, 300);
+}

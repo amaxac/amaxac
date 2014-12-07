@@ -4,9 +4,7 @@ class ImagesController < ApplicationController
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
-    @images = admin? ? Image : Image.published
-    @images = Image.unpublished  if admin? && params[:published]
-    @images = @images.order(id: :desc).page(params[:page]).per(20)
+    @images = build_images_relation.includes(:image_ratings).page(params[:page]).per(20)
   end
 
   def random
@@ -123,5 +121,12 @@ class ImagesController < ApplicationController
     def images_for_output
       @random = Image.published.order("RANDOM()").limit(2).load
       params[:image].try(:[],:text) ? Image.where("text ILIKE ?", "%#{params[:image][:text]}%").limit(5).all : [@random.first]
+    end
+
+    def build_images_relation
+      images = admin? ? Image : Image.published
+      images = Image.unpublished  if admin? && params[:published]
+      images = params[:order] == "rating" ? images.order(rating: :desc) : images.order(id: :desc)
+      images
     end
 end

@@ -35,7 +35,7 @@ class Image < ActiveRecord::Base
   end
 
   def voted?(ip)
-    self.image_ratings.where(ip: ip).any?
+    self.image_ratings.find {|e| e.ip == ip }.present?
   end
 
   class << self
