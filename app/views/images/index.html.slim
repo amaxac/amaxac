@@ -9,14 +9,14 @@
         | Ожидающие одобрения
 
 
-  .radio.cnt
-    .btn-group data-toggle="buttons"
-      label.btn.active
-        input.switch type="radio" name="options" autocomplete="off" checked="checked" data-href==images_path
-        | По дате
-      label.btn
-        input.switch type="radio" name="options" autocomplete="off" data-href==images_path(order: "rating")
-        | По рейтингу
+.radio.cnt
+  .btn-group data-toggle="buttons"
+    label.btn.active
+      input.switch type="radio" name="options" autocomplete="off" checked="checked" data-href==images_path
+      | По дате
+    label.btn
+      input.switch type="radio" name="options" autocomplete="off" data-href==images_path(order: "rating")
+      | По рейтингу
 #pagination-content
   == render "images_table", images: @images
 
