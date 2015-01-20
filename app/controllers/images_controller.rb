@@ -85,7 +85,8 @@ class ImagesController < ApplicationController
   end
 
   def publish
-    @image.update_attribute(:published, true)
+    @image
+    @image.update_attributes(published: true, )
 
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Картиночка одобрена))000' }
@@ -125,8 +126,8 @@ class ImagesController < ApplicationController
 
     def build_images_relation
       images = admin? ? Image : Image.published
-      images = Image.unpublished  if admin? && params[:published]
       images = params[:order] == "rating" ? images.order(rating: :desc) : images.order(id: :desc)
+      images = Image.unpublished.order(id: :asc)  if admin? && params[:published]
       images
     end
 end
