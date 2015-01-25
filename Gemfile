@@ -7,7 +7,8 @@ gem 'sass-rails', github: 'rails/sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer',  platforms: :ruby
-gem 'thin'
+# gem 'thin'
+gem 'unicorn'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -34,6 +35,8 @@ group :development do
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
 end
+
+
 
 # group :development, :test do
 #   gem 'rspec-rails'
