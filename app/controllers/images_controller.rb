@@ -85,8 +85,7 @@ class ImagesController < ApplicationController
   end
 
   def publish
-    @image
-    @image.update_attributes(published: true, )
+    @image.update_attributes(published: true, created_at: Time.now)
 
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Картиночка одобрена))000' }
