@@ -14,6 +14,7 @@
 
 /config/database.yml
 /config/deploy.rb
+/config/unicorn.rb
 /environments/development.rb
 
 # Ignore all logfiles and tempfiles.
