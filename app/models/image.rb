@@ -19,7 +19,6 @@ class Image < ActiveRecord::Base
       errors.add(:link, "Не получается найти изображение по ссылке =(")
     else
       errors.add(:link, "^Изображение слишком большое")  if width > 1000 || height > 600
-      # errors.add(:link, "^Допустимые разрешения: #{FORMATS.join(", ")}")  if FORMATS.exclude?(ext)
       errors.add(:link, "^Такое изображение уже присутствует")  if Image.where(sha: self.sha).where.not(id: id).any?
     end
   end
@@ -35,7 +34,7 @@ class Image < ActiveRecord::Base
   end
 
   def voted?(ip)
-    self.image_ratings.find {|e| e.ip == ip }.present?
+    image_ratings.any? {|e| e.ip == ip }
   end
 
   class << self

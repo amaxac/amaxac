@@ -7,8 +7,8 @@ gem 'sass-rails', github: 'rails/sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer',  platforms: :ruby
-# gem 'thin'
 gem 'unicorn'
+gem 'unicorn-worker-killer'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
