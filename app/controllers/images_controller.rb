@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
+    response.headers['Access-Control-Allow-Origin'] = '*'
     @images = build_images_relation.includes(:image_ratings).page(params[:page]).per(20)
   end
 
@@ -23,10 +24,12 @@ class ImagesController < ApplicationController
   end
 
   def search
+    response.headers['Access-Control-Allow-Origin'] = '*'
     @images = images_for_output
   end
 
   def autocomplete
+    response.headers['Access-Control-Allow-Origin'] = '*'
     respond_to do |format|
       format.html
       format.json { render json: Image.for_autocomplete(params[:term]) }
