@@ -1,10 +1,10 @@
 require 'open-uri'
 class ImagesController < ApplicationController
+  before_action :allow_cross_domain_requests, only: [:index, :search, :autocomplete]
   before_action :set_image, only: [:edit, :update, :destroy, :publish, :klass]
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
-    response.headers['Access-Control-Allow-Origin'] = '*'
     @images = build_images_relation.includes(:image_ratings).page(params[:page]).per(20)
   end
 
@@ -24,12 +24,14 @@ class ImagesController < ApplicationController
   end
 
   def search
-    response.headers['Access-Control-Allow-Origin'] = '*'
     @images = images_for_output
+    respond_to do |format|
+      format.html
+      format.json { render json: @images }
+    end
   end
 
   def autocomplete
-    response.headers['Access-Control-Allow-Origin'] = '*'
     respond_to do |format|
       format.html
       format.json { render json: Image.for_autocomplete(params[:term]) }
@@ -115,6 +117,10 @@ class ImagesController < ApplicationController
         flash[:alert] = "ОЗАЙБЫРГЕН ПИЗДА"
         redirect_to :back
       end
+    end
+
+    def allow_cross_domain_requests
+      response.headers['Access-Control-Allow-Origin'] = '*'
     end
 
     def image_params
