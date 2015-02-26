@@ -1,7 +1,7 @@
 require 'open-uri'
 class ImagesController < ApplicationController
   before_action :allow_cross_domain_requests, only: [:index, :search, :autocomplete]
-  before_action :set_image, only: [:edit, :update, :destroy, :publish, :klass]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :publish, :klass]
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
@@ -25,10 +25,6 @@ class ImagesController < ApplicationController
 
   def search
     @images = images_for_output
-    respond_to do |format|
-      format.html
-      format.json { render json: @images }
-    end
   end
 
   def autocomplete
