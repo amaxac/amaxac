@@ -1,3 +1,3 @@
 == README
 
-Running on Ruby 2.1 & Rails 4.2.0 rc1
+Running on Ruby 2.1, Rails 4.2.0, PostgreSQL 9.3

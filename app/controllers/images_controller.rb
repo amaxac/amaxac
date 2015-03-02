@@ -5,7 +5,8 @@ class ImagesController < ApplicationController
   before_action :check_permissions, only: [:add, :edit, :update, :destroy, :publish]
 
   def index
-    @images = build_images_relation.includes(:image_ratings).page(params[:page]).per(20)
+    per_page = params[:per].to_i > 0 ? params[:per] : 20
+    @images = build_images_relation.includes(:image_ratings).page(params[:page]).per(per_page)
   end
 
   def random
