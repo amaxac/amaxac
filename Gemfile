@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # core
-gem 'rails', '~> 4.2.0.rc1'
+gem 'rails', '~> 4.2.0'
 gem 'pg'
 gem 'sass-rails', github: 'rails/sass-rails'
 gem 'uglifier', '>= 1.3.0'
@@ -35,10 +35,3 @@ group :development do
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
 end
-
-
-
-# group :development, :test do
-#   gem 'rspec-rails'
-#   gem 'factory_girl_rails'
-# end
