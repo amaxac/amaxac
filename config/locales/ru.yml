@@ -16,7 +16,12 @@ ru:
       image:
         link: Ссылка
         text: Текст
-
+    errors:
+      models:
+        image:
+          attributes:
+            link:
+              invalid: должна начинаться с http:// или https://
 
   views:
     pagination:

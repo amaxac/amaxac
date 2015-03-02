@@ -2,8 +2,7 @@ class Image < ActiveRecord::Base
 
   has_many :image_ratings
 
-  # FORMATS = %w(jpeg jpg png)
-  validates :link, uniqueness: true, presence: true
+  validates :link, uniqueness: true, presence: true, format: { with: /https?:\/\/[\S]+/ }
   validates :text, uniqueness: { case_sensitive: false }, presence: true, length: { maximum: 400 }
   validate :check_image
 
