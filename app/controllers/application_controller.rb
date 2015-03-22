@@ -14,5 +14,6 @@ class ApplicationController < ActionController::Base
 
   def admin?
     # session[:key] == ENV["admin_key"]
+    false
   end
 end
