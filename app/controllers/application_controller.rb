@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   private
 
   def admin?
-    # session[:key] == ENV["admin_key"]
+    ENV["admin_key"].present? && session[:key] == ENV["admin_key"]
   end
 end
