@@ -17,6 +17,7 @@ class Image < ActiveRecord::Base
     rescue
       errors.add(:link, "Не получается найти изображение по ссылке =(")
     else
+      errors.add(:link, "Нельзя загружать изображение как Документ вконтакте.")  if link.index("/docs/")
       errors.add(:link, "Изображение слишком большое")  if width > 1000 || height > 600
       errors.add(:link, "Такое изображение уже присутствует")  if Image.where(sha: self.sha).where.not(id: id).any?
     end
