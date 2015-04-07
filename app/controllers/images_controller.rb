@@ -96,7 +96,7 @@ class ImagesController < ApplicationController
   end
 
   def klass
-    @image.klass(request.remote_ip)
+    @image.klass(request.remote_ip)  if image.published?
 
     respond_to do |format|
       format.html { redirect_to images_url, notice: 'Класс!' }
